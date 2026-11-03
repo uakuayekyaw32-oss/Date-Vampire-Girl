@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Vampire Girl ❤️</title>
+
+<style>
+@import url('');https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg,#240c24,#681d43,#a63c65);
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.card {
+    width: 100%;
+    max-width: 470px;
+    padding: 35px 25px;
+    text-align: center;
+    background: rgba(255,255,255,.11);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255,255,255,.25);
+    border-radius: 28px;
+    box-shadow: 0 15px 50px #16061766;
+    position: relative;
+    z-index: 2;
+    animation: appear .5s ease;
+}
+
+.screen { display: none; }
+.screen.active { display: block; }
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 44px;
+    color: #ffb8d1;
+    margin: 12px 0;
+}
+
+h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 32px;
+    margin: 20px 0;
+    color: #ffe0ec;
+}
+
+p {
+    color: #ffe6ef;
+    font-size: 14px;
+    line-height: 1.9;
+    margin: 15px 0;
+}
+
+.emoji {
+    font-size: 58px;
+    margin: 12px;
+    animation: float 3s infinite ease-in-out;
+}
+
+button {
+    border: none;
+    border-radius: 30px;
+    padding: 13px 22px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: .25s;
+    margin: 7px 4px;
+}
+
+button:hover {
+    transform: scale(1.06);
+}
+
+.primary {
+    background: #ff91b8;
+    color: #52112f;
+}
+
+.secondary {
+    background: #ffffff24;
+    border: 1px solid #ffffff66;
+    color: white;
+}
+
+.small {
+    font-size: 11px;
+    opacity: .8;
+    margin-top: 22px;
+}
+
+.heart {
+    position: fixed;
+    bottom: -30px;
+    z-index: 1;
+    pointer-events: none;
+    animation: rise linear forwards;
+}
+
+@keyframes rise {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+@keyframes float {
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes appear {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Date planner */
+
+.field {
+    text-align: left;
+    margin: 17px 0;
+}
+
+label {
+    display: block;
+    color: #ffd6e5;
+    font-size: 12px;
+    margin-bottom: 7px;
+}
+
+input, select {
+    width: 100%;
+    padding: 13px;
+    border-radius: 12px;
+    border: 1px solid #ffffff55;
+    outline: none;
+    background: #fff0f5;
+    color: #561a36;
+    font-family: inherit;
+    font-size: 13px;
+}
+
+input:focus, select:focus {
+    border: 2px solid #ff91b8;
+}
+
+.summary {
+    background: #ffffff18;
+    padding: 20px;
+    border-radius: 18px;
+    margin: 20px 0;
+    text-align: left;
+    line-height: 2;
+    font-size: 13px;
+}
+
+#noMessage {
+    min-height: 30px;
+    color: #ffd8e7;
+}
+
+@media(max-width:400px) {
+    .card { padding: 28px 17px; }
+    h1 { font-size: 37px; }
+    h2 { font-size: 28px; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- PASSWORD SCREEN -->
+
+<div class="card screen active" id="passwordScreen">
+
+    <div class="emoji">🔐</div>
+
+    <h1>A Secret Invitation</h1>
+
+    <p>
+        This little surprise is only for
+        someone special. ❤️
+    </p>
+
+    <h2>What's the secret word?</h2>
+
+    <div class="field">
+        <input
+            type="password"
+            id="secretPassword"
+            placeholder="Enter your secret word..."
+        >
+    </div>
+
+    <button class="primary" onclick="unlockInvitation()">
+        Unlock My Surprise 💗
+    </button>
+
+    <p id="passwordMessage"></p>
+
+</div>
+    <!-- SCREEN 1: WELCOME -->
+
+<div class="card screen" id="welcome"></div>
+
+    <div class="emoji">🦇</div>
+
+    <h1>Hey, Vampire Girl!</h1>
+
+    <p>
+        A mysterious little invitation has arrived
+        for someone very special...
+    </p>
+
+    <h2>Are you curious? 💌</h2>
+
+    <button class="primary" onclick="showScreen('proposal')">
+        Open My Invitation ❤️
+    </button>
+
+    <div class="small">A little surprise from U.</div>
+
+</div>
+
+
+<!-- SCREEN 2: PROPOSAL -->
+
+<div class="card screen" id="proposal">
+
+    <div class="emoji">🌹</div>
+
+    <h1>Dear Vampire Girl</h1>
+
+    <p>
+        I've been wanting to ask you something.
+        And today, I finally gathered the courage.
+    </p>
+
+    <h2>Will you go on a date with me? ❤️</h2>
+
+    <p>
+        Just you, me, some laughter
+        and a beautiful memory.
+    </p>
+
+    <button class="primary" onclick="acceptProposal()">
+        YES! 💗
+    </button>
+
+    <button class="secondary" onclick="showScreen('noScreen')">
+        NO 🙈
+    </button>
+
+    <div class="small">Choose whatever feels right. ❤️</div>
+
+</div>
+
+
+<!-- SCREEN 3: PLAYFUL NO RESPONSE -->
+
+<div class="card screen" id="noScreen">
+
+    <div class="emoji">🥺</div>
+
+    <h1>Wait... What?!</h1>
+
+    <h2>Was that a serious NO?</h2>
+
+    <p>
+        Hold on, Vampire Girl!
+        Did you really just reject my little invitation? 😭
+    </p>
+
+    <div class="emoji">👉👈</div>
+
+    <p>
+        I'm not going to argue with you...
+        but I just wanted to ask one more time.
+    </p>
+
+    <button class="primary" onclick="acceptProposal()">
+        Okay... Maybe YES! 💕
+    </button>
+
+    <button class="secondary" onclick="showScreen('finalNo')">
+        Yes, I really mean NO.
+    </button>
+
+</div>
+
+
+<!-- SCREEN 3B: RESPECTFUL NO -->
+
+<div class="card screen" id="finalNo">
+
+    <div class="emoji">🌷</div>
+
+    <h1>That's Okay!</h1>
+
+    <h2>No pressure, Vampire Girl. ❤️</h2>
+
+    <p>
+        Thanks for being honest.
+        The invitation was just a little way
+        of making you smile.
+    </p>
+
+    <button class="primary" onclick="showScreen('welcome')">
+        Back to the beginning
+    </button>
+
+</div>
+
+
+<!-- SCREEN 4: DATE PLANNER -->
+
+<div class="card screen" id="planner">
+
+    <div class="emoji">💌</div>
+
+    <h1>It's a DATE!</h1>
+
+    <p>
+        Now let's plan our little adventure.
+        You get to help choose everything!
+    </p>
+
+    <div class="field">
+        <label>📅 When should we meet?</label>
+        <input type="date" id="date">
+    </div>
+
+    <div class="field">
+        <label>⏰ What time?</label>
+        <input type="time" id="time">
+    </div>
+
+    <div class="field">
+        <label>📍 Where should we go?</label>
+        <select id="place">
+            <option value="">Choose a place</option>
+            <option>Cute little café ☕</option>
+            <option>Beautiful park 🌳</option>
+            <option>Bookstore date 📚</option>
+            <option>Restaurant 🍕</option>
+            <option>Movie date 🎬</option>
+            <option>Somewhere you choose ❤️</option>
+        </select>
+    </div>
+
+    <div class="field">
+        <label>💕 What should we do?</label>
+        <select id="activity">
+            <option value="">Choose an activity</option>
+            <option>Talk for hours 💬</option>
+            <option>Eat something delicious 🍰</option>
+            <option>Watch a movie 🎥</option>
+            <option>Walk and explore 🌙</option>
+            <option>Take cute pictures 📸</option>
+            <option>Surprise me! 🎁</option>
+        </select>
+    </div>
+
+    <button class="primary" onclick="confirmDate()">
+        Confirm Our Date ❤️
+    </button>
+
+    <p class="small">
+        You can change your choices anytime.
+    </p>
+
+</div>
+
+
+<!-- SCREEN 5: FINAL CONFIRMATION -->
+
+<div class="card screen" id="final">
+
+    <div class="emoji">🎉</div>
+
+    <h1>Our Date Plan!</h1>
+
+    <h2>It's Official! 💖</h2>
+
+    <div class="summary" id="dateSummary"></div>
+
+    <p>
+        Looking forward to making a beautiful
+        memory with you, Vampire Girl.
+    </p>
+
+    <div class="emoji">🌹🦇❤️</div>
+
+    <h2>See you soon!</h2>
+
+    <p>With affection, U.</p>
+
+    <button class="secondary" onclick="showScreen('planner')">
+        Change the plan ✏️
+    </button>
+
+</div>
+
+
+<script>
+
+// Secret password system
+
+function unlockInvitation() {
+
+    const password =
+        document.getElementById("secretPassword").value;
+
+    const message =
+        document.getElementById("passwordMessage");
+
+    if (password === "Trust") {
+
+        message.textContent = "Access granted! ❤️";
+
+        showScreen("welcome");
+
+        celebration();
+
+    } else {
+
+        message.textContent =
+            "Oops! That's not the secret word. Try again! 💕";
+    }
+}
+// Screen navigation
+
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+    });
+
+    document.getElementById(id).classList.add('active');
+
+    window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+// YES response
+
+function acceptProposal() {
+    showScreen('planner');
+    celebration();
+}
+
+// Confirm date
+
+function confirmDate() {
+
+    const date = document.getElementById('date').value;
+    const time = document.getElementById('time').value;
+    const place = document.getElementById('place').value;
+    const activity = document.getElementById('activity').value;
+
+    if (!date || !time || !place || !activity) {
+        alert("Hey Vampire Girl! Complete all the date details first. ❤️");
+        return;
+    }
+
+    const selectedDate = new Date(date + 'T00:00:00');
+
+    const today = new Date();
+    today.setHours(0,0,0,0);
+
+    if (selectedDate < today) {
+        alert("Please choose today or a future date! ❤️");
+        return;
+    }
+
+    const formattedDate = selectedDate.toLocaleDateString(
+        'en-US',
+        {day:'numeric', month:'long', year:'numeric'}
+    );
+
+    const formattedTime = new Date(
+        '2000-01-01T' + time
+    ).toLocaleTimeString('en-US', {
+        hour:'numeric',
+        minute:'2-digit'
+    });
+
+    document.getElementById('dateSummary').innerHTML = `
+        📅 <b>Date:</b> ${formattedDate}<br>
+        ⏰ <b>Time:</b> ${formattedTime}<br>
+        📍 <b>Place:</b> ${escapeHTML(place)}<br>
+        💕 <b>Activity:</b> ${escapeHTML(activity)}
+    `;
+
+    showScreen('final');
+    celebration();
+}
+
+// Safe text display
+
+function escapeHTML(value) {
+    return value.replace(/[&<>"']/g, char => ({
+        '&':'&amp;',
+        '<':'&lt;',
+        '>':'&gt;',
+        '"':'&quot;',
+        "'":'&#39;'
+    })[char]);
+}
+
+// Floating hearts
+
+function createHeart() {
+    const heart = document.createElement('div');
+
+    heart.className = 'heart';
+    heart.textContent = ['❤️','💕','💗','💖','🌹'][
+        Math.floor(Math.random()*5)
+    ];
+
+    heart.style.left = Math.random()*100 + 'vw';
+    heart.style.fontSize = (15 + Math.random()*20) + 'px';
+    heart.style.animationDuration = (4 + Math.random()*4) + 's';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 8000);
+}
+
+setInterval(createHeart, 500);
+
+// Celebration
+
+function celebration() {
+    for (let i=0; i<30; i++) {
+        setTimeout(createHeart, i*100);
+    }
+}
+
+// Prevent past dates
+
+document.getElementById('date').min =
+    new Date().toLocaleDateString('en-CA');
+
+</script>
+
+</body>
+</html>
